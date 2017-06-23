@@ -12,10 +12,6 @@ var client = new Twitter({
   access_token_secret: 'LW5ZOwqQtkoa1LcvSx2ueeObIV1P81tfOPaiwfJIiqjh8'
 });
 
-// module.exports = client;
-
-
-
 // spotify access keys
 var Spotify = require('node-spotify-api');
  
@@ -24,6 +20,13 @@ var spotify = new Spotify({
   secret: '36bca0118f484673bf6fbb53cf21cdbb'
 });
 
-// module.exports = spotify;
+// OMDB access key
+var omdb = '40e9cece';
 
-module.exports = {client, spotify};
+
+// declaration of multiple exports
+module.exports = {
+	client, 
+	spotify,
+	omdb
+};

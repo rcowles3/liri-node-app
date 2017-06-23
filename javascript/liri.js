@@ -60,7 +60,7 @@ var getTweets = function() {
 };
 
 // function to search spotify for song info
-var searchSpotify = function() {
+var searchSpotify = function(songName) {
 
     // Return:
     /*
@@ -71,18 +71,23 @@ var searchSpotify = function() {
 	*/
 
     // spotify keys
-    let spotify = keys.spotify;   
+    let spotify = keys.spotify;
 
-    spotify.search({ type: 'track', limit: 1, query: 'time bomb' }, function(err, data) {
+    // if no track is searched, default
+    if (songName === undefined) {
+        songName = 'Time Bomb';
+    }
+
+    spotify.search({ type: 'track', limit: 1, query: songName }, function(err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
 
-    // variables for track info, q is short for the query of whats searched
-    let qArtist = data.tracks.items[0].artists[0].name;
-    let qTrack = data.tracks.items[0].name;
-    let qAlbum = data.tracks.items[0].album.name;
-    let qSongLink = data.tracks.items[0].artists[0].external_urls.spotify;
+        // variables for track info, q is short for the query of whats searched
+        let qArtist = data.tracks.items[0].artists[0].name;
+        let qTrack = data.tracks.items[0].name;
+        let qAlbum = data.tracks.items[0].album.name;
+        let qSongLink = data.tracks.items[0].artists[0].external_urls.spotify;
 
         // console.log(data); // raw data object
 
@@ -92,10 +97,64 @@ var searchSpotify = function() {
         console.log("Name Of Song: " + qTrack);
         console.log("Album: " + qAlbum);
         console.log("Preview Url: " + qSongLink + "\n");
-       
+
     });
+}
+
+// function to get searched movie from omdb
+var searchOmdb = function(movieName) {
+
+    // Return
+    /*
+     	* Title of the movie.
+     	* Year the movie came out.
+     	* IMDB Rating of the movie.
+     	* Country where the movie was produced.
+     	* Language of the movie.
+     	* Plot of the movie.
+     	* Actors in the movie.
+     	* Rotten Tomatoes URL.
+     */
+
+    // omdb access key
+    let omdbKey = keys.omdb;
+
+    // if no movie is searched, default
+    if (movieName === undefined) {
+        movieName = 'Shrek';
+    }
+
+    // url to search omdb
+    var queryURL = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=" + omdbKey;
+
+    request(queryURL, function(error, response, body) {
+
+        // parse raw data as json obj
+        let omdbData = JSON.parse(body);
+
+        // Print the error if one occurred
+        if (!error && response.statusCode == 200) {
+
+        	// Display queried info
+        	console.log("\nHere is the information that you requested from your search from OMDB.\n");
+
+            console.log('Title:', omdbData.Title);
+            console.log('Year Released:', omdbData.Year);
+            console.log('IMDB Rating:', omdbData.imdbRating);
+            console.log('Country That Produced Movie:', omdbData.Country);
+            console.log('Language:', omdbData.Language);
+            console.log('Plot:', omdbData.Plot);
+            console.log('Actors:', omdbData.Actors + "\n");
+            // console.log('Rotten Tomatoes URL:', omdbData.);
+        } else {
+            console.log('error:', error);
+        }
+
+    });
+
 }
 
 // calling our functions
 // getTweets();
-searchSpotify();
+// searchSpotify();
+// searchOmdb();
