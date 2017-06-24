@@ -51,7 +51,7 @@ var getTweets = function() {
 
             // if else to check if tweet was replied to someone or not
             if (tweets[i].in_reply_to_screen_name) {
-                console.log(screenName + " Replied to " + tweets[i].in_reply_to_screen_name + " tweet:\n");
+                console.log(screenName + " Replied to " + tweets[i].in_reply_to_screen_name + "'s tweet:\n");
             } else {
                 console.log(screenName + " Tweeted: \n");
             }
@@ -102,7 +102,6 @@ var searchSpotify = function(songName) {
         console.log("Name Of Song: " + qTrack);
         console.log("Album: " + qAlbum);
         console.log("Preview Url: " + qSongLink + "\n");
-
     });
 }
 
@@ -171,16 +170,15 @@ var readFromTxtFile = function() {
         var dataArr = data.split(",");
 
         // We will then re-display the content as an array for later use.
-        console.log(dataArr);
+        // console.log(dataArr);
 
         // calls the choose command function based off whats in file, and passes the data from the array as parameters
         if (dataArr.length == 2) {
             chooseCmd(dataArr[0], dataArr[1]);
-        } else if(dataArr.length == 1) {
+        } else if (dataArr.length == 1) {
             chooseCmd(dataArr[0]);
         }
     });
-
 }
 
 // function that takes two parameters to run the app, the node command, and then what the user searches
@@ -202,6 +200,7 @@ var chooseCmd = function(nodeCmd, searchQuery) {
             break;
         default:
             console.log('\nPlease enter a valid command.\n');
+            console.log(' ----- my-tweets\n ----- spotify-this-song\n ----- movie-this\n ----- do-what-it-says\n');
             break;
     }
 };
