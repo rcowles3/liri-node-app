@@ -103,7 +103,7 @@ var searchSpotify = function(songName) {
         console.log("Album: " + qAlbum);
         console.log("Preview Url: " + qSongLink + "\n");
     });
-}
+};
 
 // function to get searched movie from omdb
 var searchOmdb = function(movieName) {
@@ -154,7 +154,7 @@ var searchOmdb = function(movieName) {
             console.log('error:', error);
         }
     });
-}
+};
 
 // function to read text from txt file
 var readFromTxtFile = function() {
@@ -179,7 +179,7 @@ var readFromTxtFile = function() {
             chooseCmd(dataArr[0]);
         }
     });
-}
+};
 
 // function that takes two parameters to run the app, the node command, and then what the user searches
 var chooseCmd = function(nodeCmd, searchQuery) {
@@ -208,7 +208,7 @@ var chooseCmd = function(nodeCmd, searchQuery) {
 // run application
 var runApp = function(argOne, argTwo) {
     chooseCmd(argOne, argTwo);
-}
+};
 
 // CALLING FUNCTIONS TO RUN
 // ====================================================
