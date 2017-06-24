@@ -73,6 +73,9 @@ var searchSpotify = function(songName) {
     // spotify keys
     let spotify = keys.spotify;
 
+    // allows user to search song
+    songName = process.argv[3];
+
     // if no track is searched, default
     if (songName === undefined) {
         songName = 'Time Bomb';
@@ -80,7 +83,7 @@ var searchSpotify = function(songName) {
 
     spotify.search({ type: 'track', limit: 1, query: songName }, function(err, data) {
         if (err) {
-            return console.log('Error occurred: ' + err);
+            return console.log('\nPlease enter a valid song name, with "-" as a space: \n' + err + "\n");
         }
 
         // variables for track info, q is short for the query of whats searched
@@ -106,18 +109,21 @@ var searchOmdb = function(movieName) {
 
     // Return
     /*
-     	* Title of the movie.
-     	* Year the movie came out.
-     	* IMDB Rating of the movie.
-     	* Country where the movie was produced.
-     	* Language of the movie.
-     	* Plot of the movie.
-     	* Actors in the movie.
-     	* Rotten Tomatoes URL.
+     	Title of the movie.
+     	Year the movie came out.
+     	IMDB Rating of the movie.
+     	Country where the movie was produced.
+     	Language of the movie.
+     	Plot of the movie.
+     	Actors in the movie.
+     	Rotten Tomatoes URL.
      */
 
     // omdb access key
     let omdbKey = keys.omdb;
+
+    // allow user to search movie
+    movieName = process.argv[3];
 
     // if no movie is searched, default
     if (movieName === undefined) {
@@ -135,8 +141,8 @@ var searchOmdb = function(movieName) {
         // Print the error if one occurred
         if (!error && response.statusCode == 200) {
 
-        	// Display queried info
-        	console.log("\nHere is the information that you requested from your search from OMDB.\n");
+            // Display queried info
+            console.log("\nHere is the information that you requested from your search from OMDB.\n");
 
             console.log('Title:', omdbData.Title);
             console.log('Year Released:', omdbData.Year);
@@ -145,16 +151,27 @@ var searchOmdb = function(movieName) {
             console.log('Language:', omdbData.Language);
             console.log('Plot:', omdbData.Plot);
             console.log('Actors:', omdbData.Actors + "\n");
-            // console.log('Rotten Tomatoes URL:', omdbData.);
+            // console.log('Rotten Tomatoes URL:', omdbData.); // OMDB doesnt provide that url 
         } else {
             console.log('error:', error);
         }
-
     });
-
 }
 
-// calling our functions
-// getTweets();
-// searchSpotify();
-// searchOmdb();
+// CALLING FUNCTIONS TO RUN
+// ====================================================
+
+switch (process.argv[2]) {
+    case 'my-tweets':
+        getTweets();
+        break;
+    case 'spotify-this-song':
+        searchSpotify();
+        break;
+    case 'movie-this':
+        searchOmdb();
+        break;
+    default:
+        console.log('\nPlease enter a valid command.\n');
+        break;
+}
