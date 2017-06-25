@@ -1,5 +1,8 @@
 var getTweets = function() {
 
+    // file system
+    var fs = require('fs');
+
     // twitter keys
     var keys = require('./../keys/keys.js');
     let twitterKeys = keys.client;
@@ -23,17 +26,45 @@ var getTweets = function() {
         // for loop to run through all tweets and grab specific data
         for (var i = 0; i < tweets.length; i++) {
 
-            // if else to check if tweet was replied to someone or not
-            if (tweets[i].in_reply_to_screen_name) {
-                console.log(screenName + " Replied to " + tweets[i].in_reply_to_screen_name + "'s tweet:\n");
-            } else {
-                console.log(screenName + " Tweeted: \n");
-            }
-            console.log(tweets[i].text + "\n");
-            console.log("Retweets: " + tweets[i].retweet_count + " Favorites: " + tweets[i].favorite_count);
-            console.log(tweets[i].created_at + "\n------------------------------------------------------------------------------------\n");
-        }
+            // variables to hold tweet data for future use
+            let repliedToScreenName = tweets[i].in_reply_to_screen_name;
+            let tweetText = tweets[i].text;
+            let retweetCount = tweets[i].retweet_count;
+            let favoriteCount = tweets[i].favorite_count;
+            let tweetDate = tweets[i].created_at;
+            let tweetsArray = [];
 
+            // variables to build tweet layout
+            let repliedHeader = screenName + " Replied to " + repliedToScreenName + "'s tweet:\n";
+            let tweetHeader = screenName + " Tweeted: \n";
+            let tweetContent = tweetText + "\n";
+            let tweetCount = "Retweets: " + retweetCount + " Favorites: " + favoriteCount;
+            let tweetFooter = tweetDate + "\n------------------------------------------------------------------------------------\n";
+
+            // if else to check if tweet was replied to someone or not
+            if (repliedToScreenName) {
+                console.log(repliedHeader);
+                tweetsArray.push(repliedHeader);
+            } else {
+                console.log(tweetHeader);
+                tweetsArray.push(tweetHeader);
+            }
+            console.log(tweetContent);
+            tweetsArray.push(tweetContent);
+            console.log(tweetCount);
+            tweetsArray.push(tweetCount);
+            console.log(tweetFooter);
+            tweetsArray.push(tweetFooter);
+
+            // testing tweetsArray logged content
+            // console.log(tweetsArray);
+
+            // writing tweetsArray to log.txt file
+            fs.appendFile('./../../log.txt', tweetsArray, (err) => {
+                if (err) throw err;
+            });
+        }
+        console.log('The "data to append" was appended to file!');
         // console.log(response); // Raw response object. 
     });
 };
