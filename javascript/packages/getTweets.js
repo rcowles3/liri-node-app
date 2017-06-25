@@ -64,7 +64,7 @@ var getTweets = function() {
                 if (err) throw err;
             });
         }
-        console.log('The "data to append" was appended to file!');
+        console.log(screenName + "'s tweets have been logged to the log.txt file!");
         // console.log(response); // Raw response object. 
     });
 };
