@@ -1,0 +1,12 @@
+
+Here is the information that you requested from your search from OMDB.
+,Title: undefined,Year Released: undefined,IMDB Rating: undefined,Country Movie Was Produced By: undefined,Language: undefined,Plot: undefined,Actors: undefined
+
+Here is the information that you requested from your search from OMDB.
+,Title: The Lion King,Year Released: 1994,IMDB Rating: 8.5,Country Movie Was Produced By: USA,Language: English, Swahili, Xhosa, Zulu,Plot: Lion cub and future king Simba searches for his identity. His eagerness to please others and penchant for testing his boundaries sometimes gets him into trouble.,Actors: Rowan Atkinson, Matthew Broderick, Niketa Calame, Jim Cummings
+
+Here is the information that you requested from your search from OMDB.
+,Title: The Lion King,Year Released: 1994,IMDB Rating: 8.5,Country Movie Was Produced By: USA,Language: English, Swahili, Xhosa, Zulu,Plot: Lion cub and future king Simba searches for his identity. His eagerness to please others and penchant for testing his boundaries sometimes gets him into trouble.,Actors: Rowan Atkinson, Matthew Broderick, Niketa Calame, Jim Cummings
+
+Here is the information that you requested from your Spotify search.,
+Artist: blink-182,Name Of Song: All The Small Things,Album: Enema Of The State,Preview Url: https://open.spotify.com/artist/6FBDaR13swtiWwGhX1WQsP

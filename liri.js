@@ -21,9 +21,9 @@ var searchArg = process.argv[3];
 var nodeArg = process.argv[2];
 
 // reading exports from other js files from packages dr
-var getTweets = require('./../packages/getTweets.js');
-var searchSpotify = require('./../packages/searchSpotify.js');
-var searchOmdb = require('./../packages/searchOmdb.js');
+var getTweets = require('./javascript/packages/getTweets.js');
+var searchSpotify = require('./javascript/packages/searchSpotify.js');
+var searchOmdb = require('./javascript/packages/searchOmdb.js');
 
 // FUNCTIONS TO RUN APPLICATION
 // ====================================================
@@ -31,7 +31,7 @@ var searchOmdb = require('./../packages/searchOmdb.js');
 // // function to read text from txt file
 var readData = function() {
 
-    fs.readFile("./../../random.txt", "utf8", function(error, data) {
+    fs.readFile("./random.txt", "utf8", function(error, data) {
 
         // If the code experiences any errors it will log the error to the console.
         if (error) {
