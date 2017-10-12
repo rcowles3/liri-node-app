@@ -60,7 +60,7 @@ var getTweets = function() {
             // console.log(tweetsArray);
 
             // writing tweetsArray to log.txt file
-            fs.appendFile('./../../log.txt', tweetsArray, (err) => {
+            fs.appendFile('./../log.txt', tweetsArray, (err) => {
                 if (err) throw err;
             });
         }
